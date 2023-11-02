@@ -52,12 +52,8 @@ namespace ToDo
             {
                 Console.WriteLine("Ingrese el número de la tarea a remover: ");
                 // Show current taks
-                for (int i = 0; i < TaskList.Count; i++)
-                {
-                    Console.WriteLine((i + 1) + ". " + TaskList[i]);
-                }
-                Console.WriteLine("----------------------------------------");
-
+                TaskToDoList();
+                
                 string ingresaNumParaRemover = Console.ReadLine();
                 // Remove one position
                 int indexToRemove = Convert.ToInt32(ingresaNumParaRemover) - 1;
@@ -98,13 +94,18 @@ namespace ToDo
             } 
             else
             {
-                Console.WriteLine("----------------------------------------");
-                for (int i = 0; i < TaskList.Count; i++)
-                {
-                    Console.WriteLine((i + 1) + ". " + TaskList[i]);
-                }
-                Console.WriteLine("----------------------------------------");
+                TaskToDoList();
             }
+        }
+        //separación ---------------------------------------------------------
+        public static void TaskToDoList()
+        {
+            Console.WriteLine("----------------------------------------"); //reto hacer una función
+            for (int i = 0; i < TaskList.Count; i++)
+            {
+                Console.WriteLine((i + 1) + ". " + TaskList[i]);
+            }
+            Console.WriteLine("----------------------------------------");
         }
     }
     public enum Menu
