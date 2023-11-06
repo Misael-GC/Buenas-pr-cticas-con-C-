@@ -57,14 +57,12 @@ namespace ToDo
                 string ingresaNumParaRemover = Console.ReadLine();
                 // Remove one position
                 int indexToRemove = Convert.ToInt32(ingresaNumParaRemover) - 1;
-                if (indexToRemove > -1)
+
+                if (indexToRemove > -1 && TaskList.Count > 0)
                 {
-                    if (TaskList.Count > 0)
-                    {
                         string taskToRemove = TaskList[indexToRemove];
                         TaskList.RemoveAt(indexToRemove);
                         Console.WriteLine("Tarea " + taskToRemove + " eliminada");
-                    }
                 }
             }
             catch (Exception)
@@ -101,10 +99,12 @@ namespace ToDo
         public static void TaskToDoList()
         {
             Console.WriteLine("----------------------------------------"); //reto hacer una función
-            for (int i = 0; i < TaskList.Count; i++)
-            {
-                Console.WriteLine((i + 1) + ". " + TaskList[i]);
-            }
+            var indexTask = 1;
+            TaskList.ForEach( p =>  Console.WriteLine(indexTask++ + ". " + p));
+            // for (int i = 0; i < TaskList.Count; i++) se lelimna por el principio KISS
+            // {
+            //     Console.WriteLine((i + 1) + ". " + TaskList[i]);
+            // }
             Console.WriteLine("----------------------------------------");
         }
     }
