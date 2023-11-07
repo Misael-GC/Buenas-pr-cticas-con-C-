@@ -22,9 +22,9 @@ do
 } while ((Menu)menuSelected != Menu.Exit);
 
 /// <summary>
-/// Show the main menu 
+/// Show the options for tasks, 1. Nueva tarea
 /// </summary>
-/// <returns>Returns option indicated by user</returns>
+/// <returns>Returns option selected by user</returns>
 int ShowMainMenu()
 {
     Console.WriteLine("----------------------------------------");
@@ -34,7 +34,6 @@ int ShowMainMenu()
     Console.WriteLine("3. Tareas pendientes");
     Console.WriteLine("4. Salir");
 
-    // Read line
     string ingresaNumero = Console.ReadLine();
     return Convert.ToInt32(ingresaNumero);
 }
@@ -44,11 +43,11 @@ void ShowMenuRemove()
     try
     {
         Console.WriteLine("Ingrese el número de la tarea a remover: ");
-        // Show current taks
+        
         TaskToDoList();
 
         string ingresaNumParaRemover = Console.ReadLine();
-        // Remove one position
+        // Remove one position because thhe array starts in 0
         int indexToRemove = Convert.ToInt32(ingresaNumParaRemover) - 1;
         if (indexToRemove > (TaskList.Count - 1) || indexToRemove < 0)
             Console.WriteLine("Número de tarea seleccionado no es valido");
@@ -108,7 +107,7 @@ void TaskToDoList()
     Console.WriteLine("----------------------------------------"); //reto hacer una función
     var indexTask = 1;
     TaskList.ForEach(task => Console.WriteLine($"{indexTask++} . {task}"));
-    // for (int i = 0; i < TaskList.Count; i++) se lelimna por el principio KISS
+    // for (int i = 0; i < TaskList.Count; i++) se elimina por el principio KISS
     // {
     //     Console.WriteLine((i + 1) + ". " + TaskList[i]);
     // }
