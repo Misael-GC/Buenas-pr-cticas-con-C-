@@ -5,11 +5,10 @@ namespace ToDo
 {
     internal class Program
     {
-        public static List<string> TaskList { get; set; }
+        public static List<string> TaskList { get; set; } = new List<string>();
 
         static void Main(string[] args)
         {
-            TaskList = new List<string>();
             int menuSelected = 0;
             do
             {
@@ -65,7 +64,7 @@ namespace ToDo
                     {
                         string taskToRemove = TaskList[indexToRemove];
                         TaskList.RemoveAt(indexToRemove);
-                        Console.WriteLine("Tarea " + taskToRemove + " eliminada");
+                        Console.WriteLine($"Tarea {taskToRemove} eliminada");
                     }
                 }
 
@@ -99,13 +98,13 @@ namespace ToDo
 
         public static void ShowMenuTaskList()
         {
-            if (TaskList == null || TaskList.Count == 0)
+            if (TaskList?.Count > 0)
             {
-                Console.WriteLine("No hay tareas por realizar");
+                TaskToDoList();
             } 
             else
             {
-                TaskToDoList();
+                Console.WriteLine("No hay tareas por realizar");
             }
         }
         //separación ---------------------------------------------------------
@@ -113,7 +112,7 @@ namespace ToDo
         {
             Console.WriteLine("----------------------------------------"); //reto hacer una función
             var indexTask = 1;
-            TaskList.ForEach( p =>  Console.WriteLine(indexTask++ + ". " + p));
+            TaskList.ForEach( p =>  Console.WriteLine($"{indexTask++} . {p}"));
             // for (int i = 0; i < TaskList.Count; i++) se lelimna por el principio KISS
             // {
             //     Console.WriteLine((i + 1) + ". " + TaskList[i]);
